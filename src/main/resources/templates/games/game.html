@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: header"></head>
+
+<body>
+	<div>
+		<a th:href="@{/}" class="btn btn-primary">Back</a> <a
+			th:href="@{/delete(id=${game.id})}" class="btn btn-danger">Delete</a>
+		<a th:href="@{/edit(id=${game.id})}" class="btn btn-warning"
+			style="color: white;">Edit</a> <br> <br>
+		<h3 th:text="${game.name}" class="btn btn-lg btn-primary"></h3>
+		<br> <a th:text="${game.type}" class="btn btn-primary"
+			style="color: white;"></a> <a th:text="${game.platform}"
+			class="btn btn-primary" style="color: white;"></a> <a
+			th:text="${'Buy it '+game.price+'&euro;'}" class="btn btn-warning"
+			style="color: white;" th:href="@{/buyGame(id=${game.id})}"></a> <br>
+		<img alt="sample"
+			th:src="${'data:image/png;base64,'+game.fotos[1].fotoString}"
+			style="width: 100%; padding-top: 3px;"> <img alt="sample"
+			th:src="${'data:image/png;base64,'+game.fotos[2].fotoString}"
+			style="width: 100%; padding-top: 3px;"> <img alt="sample"
+			th:src="${'data:image/png;base64,'+game.fotos[3].fotoString}"
+			style="width: 100%; padding-top: 3px;"> <img alt="sample"
+			th:src="${'data:image/png;base64,'+game.fotos[0].fotoString}"
+			style="width: 100%; padding-top: 3px;"> <br> <a
+			th:text="${game.overview}" class="btn btn-lg btn-primary"
+			th:href="@{/showGame(id=${game.id})}"></a>
+	</div>
+</body>
+</html>

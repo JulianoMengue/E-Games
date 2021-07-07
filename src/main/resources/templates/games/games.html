@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: header"></head>
+
+<body>
+	<div>
+		<a th:href="@{/add}" class="btn btn-success">Add new game</a><br>
+		<br>
+		<table class="table-borderless">
+			<tbody>
+				<tr th:each="game: ${games}">
+					<td><a th:text="${game.name}" class="btn btn-lg btn-primary"
+						th:href="@{/showGame(id=${game.id})}"></a> <a
+						th:href="@{/showGame(id=${game.id})}"> <img alt="sample"
+							th:src="${'data:image/png;base64,'+game.fotos[0].fotoString}"
+							style="width: 100%; padding-top: 3px;"></a> <a
+						th:text="${game.type}" class="btn btn-lg btn-primary"
+						th:href="@{/showGame(id=${game.id})}"></a> <a
+						th:text="${game.platform}" class="btn btn-lg btn-primary"
+						th:href="@{/showGame(id=${game.id})}"></a> <a
+						th:text="${game.price}" class="btn btn-lg btn-primary"
+						th:href="@{/showGame(id=${game.id})}"></a> <br> <br> <br></td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
