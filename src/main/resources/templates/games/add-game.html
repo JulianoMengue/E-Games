@@ -2,22 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="header :: header"></head>
 <body>
-	<div>
+	<div class="container">
 		<br> <a th:href="@{/}" class="btn btn-success">Back</a> <br>
 		<br>
 		<h1 class="text-primary">New Game</h1>
 		<form method="POST" action="/addGame" enctype="multipart/form-data"
 			class="form-group mb-5">
-			<input type="hidden" class="form-control" name="id" th:field="${game.id}"
-				required>
-			<input type=text name="name" th:field="${game.name}" placeholder="Name" class="form-control">
-			<br> <select class="form-control" name="type">
+			<label>Name</label> <input type="hidden" class="form-control"
+				name="id" th:field="${game.id}" required> <input type=text
+				name="name" th:field="${game.name}" class="form-control"> <label>Type</label>
+			<select class="form-control" name="type">
 				<option selected th:text="${game.type}"></option>
 				<option>DVD</option>
 				<option>CD</option>
 				<option>Cartridge</option>
-				<option>Code voucher</option>
-			</select> <br> <select class="form-control" name="platform">
+				<option>Digital</option>
+			</select> <label>Platform</label> <select class="form-control" name="platform">
 				<option selected th:text="${game.platform}"></option>
 				<option>PC</option>
 				<option>PS5</option>
@@ -36,17 +36,19 @@
 				<option>Nintendo Wii</option>
 				<option>Nintendo NES</option>
 				<option>Nintendo SNES</option>
-			</select> <br> <input type=text name="price" placeholder="Price (euro)"
-				class="form-control" th:field="${game.price}"> <br> <label>Overview</label>
-			<textarea name="textArea" style="width: 100%;" th:text="${game.overview}"> </textarea>
-			<br> <br> <input type="file" name="image1"
-				accept="image/png/jpeg" class="btn btn-primary" required > <br>
-			<br> <input type="file" name="image2" accept="image/png/jpeg"
-				class="btn btn-primary" required> <br> <br> <input
+			</select> <label>Price</label> <input type=text name="price"
+				class="form-control" th:field="${game.price}"> <label>Overview</label>
+			<textarea name="textArea" style="width: 100%;"
+				th:text="${game.overview}"> </textarea>
+			<br> <br>		
+			 <input type="file" name="image1"
+				accept="image/png/jpeg" class="btn btn-primary"  > <br> <br>
+			<input type="file" name="image2" accept="image/png/jpeg"
+				class="btn btn-primary"> <br> <br> <input
 				type="file" name="image3" accept="image/png/jpeg"
-				class="btn btn-primary" required> <br> <br> <input
+				class="btn btn-primary"> <br> <br> <input
 				type="file" name="image4" accept="image/png/jpeg"
-				class="btn btn-primary" required><br> <br> <input
+				class="btn btn-primary"> <br> <br> <input
 				type="submit" value="Upload" class="btn btn-primary" />
 		</form>
 	</div>

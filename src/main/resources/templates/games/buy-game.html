@@ -3,12 +3,12 @@
 <head th:replace="header :: header"></head>
 
 <body>
-	<div>
+	<div class="container">
 		<a th:href="@{/}" class="btn btn-primary">Back</a> <br> <br>
 		<h3 th:text="${game.name}" class="btn btn-lg btn-primary"></h3>
 		<br> <img alt="sample"
 			th:src="${'data:image/png;base64,'+game.fotos[0].fotoString}"
-			style="width: 100%; padding-top: 3px;"><a
+			style="width: 50%; padding-top: 3px;"> <br> <a
 			th:text="${'Buy it '+game.price+'&euro;'}" class="btn btn-warning"
 			style="color: white;"></a> <br>
 	</div>

@@ -45,7 +45,7 @@ public class GameService {
 	}
 
 	public Foto binaryToString(Foto foto) {
-		foto.setFotoString(Base64.getEncoder().encodeToString(foto.getFotobinary().getData()));
+		foto.setFotoString(Base64.getEncoder().encodeToString(foto.getFotoBinary().getData()));
 		return foto;
 	}
 
@@ -68,27 +68,19 @@ public class GameService {
 		return games;
 	}
 
-	public void addGame(String id,MultipartFile image1, MultipartFile image2, MultipartFile image3, MultipartFile image4,
-			String name, String type, String platform, String price, String overview) throws IOException {
-		Foto foto1 = new Foto();
-		Foto foto2 = new Foto();
-		Foto foto3 = new Foto();
-		Foto foto4 = new Foto();
-		foto1.setFotobinary(new Binary(BsonBinarySubType.BINARY, image1.getBytes()));
-		foto2.setFotobinary(new Binary(BsonBinarySubType.BINARY, image2.getBytes()));
-		foto3.setFotobinary(new Binary(BsonBinarySubType.BINARY, image3.getBytes()));
-		foto4.setFotobinary(new Binary(BsonBinarySubType.BINARY, image4.getBytes()));
-		Game game = new Game();
-		game.setName(name);
-		game.setId(id);
-		game.setType(type);
-		game.setPlatform(platform);
-		game.setPrice(price);
-		game.setOverview(overview);
-		game.addFotos(foto1);
-		game.addFotos(foto2);
-		game.addFotos(foto3);
-		game.addFotos(foto4);
+	public void addGame(String id, MultipartFile image1, MultipartFile image2, MultipartFile image3,
+			MultipartFile image4, String name, String type, String platform, String price, String overview)
+			throws IOException {
+		List<Foto> fotos = new ArrayList<Foto>();
+		Foto foto1 = new Foto(new Binary(BsonBinarySubType.BINARY, image1.getBytes()), image1.getOriginalFilename());
+		Foto foto2 = new Foto(new Binary(BsonBinarySubType.BINARY, image2.getBytes()), image2.getOriginalFilename());
+		Foto foto3 = new Foto(new Binary(BsonBinarySubType.BINARY, image3.getBytes()), image3.getOriginalFilename());
+		Foto foto4 = new Foto(new Binary(BsonBinarySubType.BINARY, image4.getBytes()), image4.getOriginalFilename());
+		fotos.add(foto1);
+		fotos.add(foto2);
+		fotos.add(foto3);
+		fotos.add(foto4);
+		Game game = new Game(id, name, type, platform, price, overview, fotos);
 		this.gameService.save(game);
 	}
 

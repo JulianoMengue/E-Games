@@ -12,11 +12,18 @@ public class Foto implements Serializable {
 	@Id
 	private String id;
 
-	private Binary fotobinary;
+	private String name;
+
+	private Binary fotoBinary;
 
 	private String fotoString;
 
 	public Foto() {
+	}
+
+	public Foto(Binary fotoBinary, String name) {
+		this.name = name;
+		this.fotoBinary = fotoBinary;
 	}
 
 	public Foto(String id) {
@@ -31,12 +38,12 @@ public class Foto implements Serializable {
 		this.id = id;
 	}
 
-	public Binary getFotobinary() {
-		return fotobinary;
+	public Binary getFotoBinary() {
+		return fotoBinary;
 	}
 
-	public void setFotobinary(Binary fotobinary) {
-		this.fotobinary = fotobinary;
+	public void setFotoBinary(Binary fotoBinary) {
+		this.fotoBinary = fotoBinary;
 	}
 
 	public String getFotoString() {
@@ -45,6 +52,14 @@ public class Foto implements Serializable {
 
 	public void setFotoString(String fotoString) {
 		this.fotoString = fotoString;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

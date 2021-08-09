@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: header"></head>
+
+<body>
+	<div class="container">
+		<br> <a th:href="@{/}" class="btn btn-success">Back</a> <br>
+		<br> <a th:text="${text.name}" class="btn btn-primary"
+			style="color: white;"></a> <br>
+		<br> <a th:text="${text.article}" class="btn btn-primary"
+			style="color: white;"></a>
+
+	</div>
+</body>
+</html>

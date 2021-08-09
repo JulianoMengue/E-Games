@@ -16,6 +16,17 @@ public class Game {
 	private String overview;
 	private List<Foto> fotos = new ArrayList<Foto>();
 
+	public Game(String id, String name, String type, String platform, String price, String overview, List<Foto> fotos) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.platform = platform;
+		this.price = price;
+		this.overview = overview;
+		this.fotos = fotos;
+	}
+
 	public Game() {
 		super();
 	}

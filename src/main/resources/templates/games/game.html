@@ -3,7 +3,8 @@
 <head th:replace="header :: header"></head>
 
 <body>
-	<div>
+	<div class="container">
+	<br>
 		<a th:href="@{/}" class="btn btn-primary">Back</a> <a
 			th:href="@{/delete(id=${game.id})}" class="btn btn-danger">Delete</a>
 		<a th:href="@{/edit(id=${game.id})}" class="btn btn-warning"

@@ -23,7 +23,7 @@ public class FotoService {
 	}
 
 	public Foto binaryToString(Foto foto) {
-		foto.setFotoString(Base64.getEncoder().encodeToString(foto.getFotobinary().getData()));
+		foto.setFotoString(Base64.getEncoder().encodeToString(foto.getFotoBinary().getData()));
 		return foto;
 	}
 

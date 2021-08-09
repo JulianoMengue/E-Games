@@ -1,5 +1,6 @@
 package com.julianomengue.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.julianomengue.classes.Game;
+import com.julianomengue.classes.Text;
+import com.julianomengue.repositories.TextRepository;
 import com.julianomengue.services.GameService;
 
 @Controller
@@ -19,6 +22,9 @@ public class GameController {
 
 	@Autowired
 	private GameService gameService;
+
+	@Autowired
+	private TextRepository textRepo;
 
 	@GetMapping()
 	public String games(Model model) {
@@ -41,7 +47,7 @@ public class GameController {
 			@RequestParam("name") String name, @RequestParam("type") String type, @RequestParam("id") String id,
 			@RequestParam("platform") String platform, @RequestParam("price") String price,
 			@RequestParam("textArea") String overview, Model model) throws Exception {
-		this.gameService.addGame(id,image1, image2, image3, image4, name, type, platform, price, overview);
+		this.gameService.addGame(id, image1, image2, image3, image4, name, type, platform, price, overview);
 		return "redirect:/";
 	}
 
@@ -74,10 +80,29 @@ public class GameController {
 		return "redirect:/";
 	}
 
+	@GetMapping("/show-type")
+	public String showType(Model model, @RequestParam String type) {
+		List<Text> texts = this.textRepo.findAll();
+		type = type.toLowerCase();
+		Text text=new Text();
+		for (int i = 0; i < texts.size(); i++) {
+			if (texts.get(i).getTag().contentEquals(type)) {
+				text=texts.get(i);
+			}
+		}
+		model.addAttribute("text", text);
+		return "games/text";
+	}
+
 	@GetMapping("/edit")
 	public String edit(Model model, @RequestParam String id) {
 		Game game = new Game();
+		List<String> fotoNames = new ArrayList<String>();
 		game = this.gameService.findById(id);
+		for (int i = 0; i < game.getFotos().size(); i++) {
+			fotoNames.add(game.getFotos().get(i).getName());
+		}
+		model.addAttribute("names", fotoNames);
 		model.addAttribute("game", game);
 		return "games/add-game";
 	}
