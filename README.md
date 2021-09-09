@@ -1,4 +1,4 @@
-# e-games
+# E-games
 
 Ich erstelle eine Website zur Ausstellung, zum Verkauf und zum Aus-
 tausch von Actionfiguren und Videospielen für Verkäufer und Kunden
